@@ -1,0 +1,38 @@
+@use "../../styles/partials/variables" as *;
+
+.main-content {
+  flex: 1;
+  padding: 2rem 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.option-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 40px;
+
+  &__button {
+    padding: 15px 30px;
+    background-color: $color-primary-red;
+    color: $color-primary-white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-secondary-1;
+    }
+  }
+}
+
+.api-results {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  background-color: $color-neutral-lighter;
+  border-radius: 8px;
+  text-align: center;
+}
