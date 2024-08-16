@@ -1,6 +1,6 @@
 import React from "react";
-import SurveyStage from "../SurveyStage/SurveyStage";
-import "../HomePage/HomePage.scss";
+import SurveyStage from "../../components/SurveyStage/SurveyStage";
+import "./HomePage.scss";
 
 const HomePage = () => {
   return (

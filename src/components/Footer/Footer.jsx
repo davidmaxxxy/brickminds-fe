@@ -10,9 +10,9 @@ const Footer = () => {
         <div className="footer__item">Footer Item 3</div>
       </div>
       <div className="footer__container">
-        <div className="footer__item">Footer Item 4</div>
-        <div className="footer__item">Footer Item 5</div>
-        <div className="footer__item">Footer Item 6</div>
+        <h1 className="footer__item">Footer Item 4</h1>
+        <h3 className="footer__item">Footer Item 5</h3>
+        <p className="footer__item">Footer Item 6</p>
       </div>
     </footer>
   );
