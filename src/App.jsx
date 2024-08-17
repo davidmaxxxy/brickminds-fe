@@ -7,14 +7,14 @@ import HomePage from "./pages/HomePage/HomePage";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <main className="App">
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           {/* Add additional routes here as needed */}
         </Routes>
         <Footer />
-      </div>
+      </main>
     </Router>
   );
 }
