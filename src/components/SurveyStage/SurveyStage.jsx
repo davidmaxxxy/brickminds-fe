@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./SurveyStage.scss";
+import image1 from "../../assets/images/lego-img-round-1.jpeg";
+import image2 from "../../assets/images/lego-img-round-2.jpg";
+import image3 from "../../assets/images/lego-img-round-3.jpg";
 
 const SurveyStage = () => {
   const [currentStage, setCurrentStage] = useState(1);
@@ -8,18 +11,18 @@ const SurveyStage = () => {
   const choices = [
     {
       id: 1,
-      image: "path/to/image1.jpg",
-      label: "Choice 1",
+      image: image1,
+      // label: "Choice 1",
     },
     {
       id: 2,
-      image: "path/to/image2.jpg",
-      label: "Choice 2",
+      image: image2,
+      // label: "Choice 2",
     },
     {
       id: 3,
-      image: "path/to/image3.jpg",
-      label: "Choice 3",
+      image: image3,
+      // label: "Choice 3",
     },
   ];
 

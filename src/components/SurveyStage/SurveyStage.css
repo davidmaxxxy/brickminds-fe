@@ -18,14 +18,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000000;
+  color: #ffffff;
   font-weight: 700;
 }
 .survey-stage__circle.active {
-  background-color: #4e2b93; /* LEGO Green */
+  background-color: #00b33b;
 }
 .survey-stage__question {
   font-size: 24px;
+  font-weight: 700;
   margin-bottom: 2rem;
   text-align: center;
   padding: 0 2rem;
@@ -42,13 +43,15 @@
   cursor: pointer;
 }
 .survey-stage__choice img {
-  width: 100%;
-  height: auto;
+  width: 400px;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border: 2px solid transparent;
   border-radius: 10px;
 }
 .survey-stage__choice img:hover {
-  border-color: #4e2b93; /* LEGO Green */
+  border-color: #006dc0;
 }
 .survey-stage__choice-label {
   margin-top: 1rem;
