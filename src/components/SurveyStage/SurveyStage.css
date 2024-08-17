@@ -5,10 +5,22 @@
   padding: 2rem;
 }
 .survey-stage__indicator {
+  position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 20%;
   margin-bottom: 2rem;
+}
+.survey-stage__connector {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #e0e0e0;
+  z-index: 1;
+  transform: translateY(-50%);
 }
 .survey-stage__circle {
   width: 30px;
@@ -20,13 +32,13 @@
   align-items: center;
   color: #ffffff;
   font-weight: 700;
+  z-index: 3;
 }
 .survey-stage__circle.active {
   background-color: #00b33b;
 }
 .survey-stage__question {
   font-size: 24px;
-  font-weight: 700;
   margin-bottom: 2rem;
   text-align: center;
   padding: 0 2rem;

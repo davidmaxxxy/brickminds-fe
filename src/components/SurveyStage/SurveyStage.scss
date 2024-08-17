@@ -7,10 +7,23 @@
   padding: 2rem;
 
   &__indicator {
+    position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 20%;
     margin-bottom: 2rem;
+  }
+
+  &__connector {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-neutral-light;
+    z-index: 1;
+    transform: translateY(-50%);
   }
 
   &__circle {
@@ -23,6 +36,7 @@
     align-items: center;
     color: $color-primary-white;
     font-weight: $font-weight-bold;
+    z-index: 3;
 
     &.active {
       background-color: $color-secondary-3;
@@ -31,7 +45,6 @@
 
   &__question {
     font-size: $font-size-title-2;
-    font-weight: $font-weight-bold;
     margin-bottom: 2rem;
     text-align: center;
     padding: 0 2rem;

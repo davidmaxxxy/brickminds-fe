@@ -35,7 +35,8 @@ const SurveyStage = () => {
   return (
     <div className="survey-stage">
       <div className="survey-stage__indicator">
-        {[1, 2, 3].map((stage) => (
+        <div className="survey-stage__connector"></div>
+        {[1, 2, 3, 4].map((stage) => (
           <div
             key={stage}
             className={`survey-stage__circle ${
