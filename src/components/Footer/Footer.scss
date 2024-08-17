@@ -48,7 +48,7 @@
   /* Styling for the titles in each section */
   &__title {
     font-size: 12px;
-    font-weight: $font-weight-regular;
+    font-weight: $font-weight-bold;
     margin-bottom: 1rem;
     line-height: 20px;
   }
@@ -63,7 +63,7 @@
 
   /* Adjust LEGO Logo Size */
   &__logo {
-    width: 150px;
+    width: 100px;
     margin-bottom: 1rem;
   }
 }

@@ -7,56 +7,68 @@ import image3 from "../../assets/images/lego-img-round-3.jpg";
 const SurveyStage = () => {
   const [currentStage, setCurrentStage] = useState(1);
 
-  // Sample choices - we will replace it with dynamic content from the backend
-  const choices = [
+  const stages = [
     {
-      id: 1,
-      image: image1,
-      // label: "Choice 1",
+      question:
+        "Imagine you're going on an adventure. What would you pack in your backpack?",
+      choices: [
+        { id: 1, image: image1, label: "Map" },
+        { id: 2, image: image2, label: "Compass" },
+        { id: 3, image: image3, label: "Torch" },
+      ],
     },
     {
-      id: 2,
-      image: image2,
-      // label: "Choice 2",
+      question: "What is your favorite color?",
+      choices: [
+        { id: 1, image: image1, label: "Red" },
+        { id: 2, image: image2, label: "Green" },
+        { id: 3, image: image3, label: "Blue" },
+      ],
     },
     {
-      id: 3,
-      image: image3,
-      // label: "Choice 3",
+      question: "Choose a hobby:",
+      choices: [
+        { id: 1, image: image1, label: "Reading" },
+        { id: 2, image: image2, label: "Hiking" },
+        { id: 3, image: image3, label: "Swimming" },
+      ],
     },
   ];
 
   const handleChoiceClick = (choiceId) => {
-    console.log(`User has selected choice: ${choiceId}`);
+    console.log(
+      `User has selected choice: ${choiceId} for stage ${currentStage}`
+    );
 
-    // we need to add logic to store users choice...
+    if (currentStage < stages.length) {
+      setCurrentStage(currentStage + 1);
+    } else {
+      console.log(`Survey complete!`);
+    }
   };
 
   return (
     <div className="survey-stage">
       <div className="survey-stage__indicator">
         <div className="survey-stage__connector"></div>
-        {[1, 2, 3, 4].map((stage) => (
+        {stages.map((_, index) => (
           <div
-            key={stage}
-            className={`survey-stage__circle ${
-              currentStage === stage ? "active" : ""
+            key={index + 1}
+            className={`survey-stage__circle${
+              currentStage === index + 1 ? " active" : ""
             }`}
           >
-            {stage}
+            {index + 1}
           </div>
         ))}
       </div>
 
-      {/* Container 2: Question */}
       <div className="survey-stage__question">
-        Imagine you're going on an adventure. What would you pack in your
-        backpack?
+        {stages[currentStage - 1].question}
       </div>
 
-      {/* Container 3: Choices */}
       <div className="survey-stage__choices">
-        {choices.map((choice) => (
+        {stages[currentStage - 1].choices.map((choice) => (
           <div
             key={choice.id}
             className="survey-stage__choice"
