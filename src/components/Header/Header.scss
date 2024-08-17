@@ -1,0 +1,122 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as mixin;
+
+.header {
+  color: $color-primary-white;
+  text-align: center;
+
+  @include mixin.tablet {
+    background-color: $color-primary-yellow;
+    padding: 1rem;
+  }
+}
+
+.mobile--navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  @include mixin.tablet {
+    display: none;
+  }
+
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__menuSvg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  &__logo {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  &__CTA-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  &__CTA-button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    &--svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+.tablet--navbar {
+  display: none;
+  @include mixin.tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__navigation-container {
+    display: flex;
+    align-items: center;
+  }
+  &__logo-container {
+    padding-right: 3rem;
+  }
+
+  &__logo {
+    width: 3rem;
+    height: 3rem;
+  }
+  &__navigation-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    &-item {
+      list-style: none;
+
+      & a {
+        text-decoration: none;
+        font-family: "Cera Pro Medium";
+        color: $color-primary-black;
+      }
+      &--bgWhite {
+        & a {
+          text-decoration: none;
+          font-family: "Cera Pro Regular";
+          color: $color-secondary-1;
+        }
+        list-style: none;
+        padding: 0.3rem 1rem;
+        border-radius: 0.1rem;
+        background-color: $color-primary-white;
+      }
+    }
+  }
+
+  &__CTA-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  &__CTA-button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    &--svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}

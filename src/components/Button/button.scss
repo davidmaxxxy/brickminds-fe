@@ -1,0 +1,27 @@
+// @use "../../styles/partials/colors.scss" as colors;
+@use "../../styles//partials/variables" as colors;
+
+.button {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 2.5rem;
+  padding: 1.5rem;
+  background-color: colors.$color-secondary-5;
+  border: none;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+
+  &__title--container {
+    width: 100%;
+    &-text {
+      font-family: "Cera Pro Regular";
+    }
+  }
+
+  &:hover {
+    background-color: colors.$color-secondary-5;
+  }
+}
