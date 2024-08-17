@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomePage.scss";
+import SurveyStage from "../../components/SurveyStage/SurveyStage";
 
 const HomePage = () => {
   const [showSurveyStage, setShowSurveyStage] = useState(false);
@@ -21,7 +22,9 @@ const HomePage = () => {
             <span className="span-5">gift?</span>
           </h1>
 
-          <button className="gift--finder-btn">Launch the Gift Finder</button>
+          <button className="gift--finder-btn" onClick={handleLaunchClick}>
+            Launch the Gift Finder
+          </button>
         </>
       ) : (
         <SurveyStage />
