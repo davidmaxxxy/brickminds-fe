@@ -1,23 +1,69 @@
 @use "../../styles/partials/variables" as *;
 
 .footer {
-  background-color: $color-secondary-4;
-  padding: 2rem 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  background-color: $color-secondary-8;
+  padding: 3rem 5rem;
+  color: $color-primary-white;
+  font-family: "Cera Pro", sans-serif;
+  font-weight: $font-weight-regular;
+  font-size: 12px;
+  line-height: 20px;
 
-  &__container {
+  &__section--info {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: $color-primary-black;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
 
+  /* Container for the LEGO logo and related links */
+  &__container--logo-links {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem; /* Space between the two main containers */
+    align-items: flex-start;
+  }
+
+  /* Container for the ABOUT US, SUPPORT, ATTRACTIONS, MORE FROM US sections */
+  &__container--sections {
+    display: flex;
+    justify-content: space-between;
+    flex: 3; /* Takes more space than the logo/links container */
+    gap: 2rem;
+  }
+
+  /* Individual sections within the sections container */
+  &__container--about,
+  &__container--support,
+  &__container--attractions,
+  &__container--more {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 150px;
+  }
+
+  /* Styling for the titles in each section */
+  &__title {
+    font-size: 12px;
+    font-weight: $font-weight-regular;
+    margin-bottom: 1rem;
+    line-height: 20px;
+  }
+
+  /* Styling for each item in the footer */
   &__item {
-    margin-bottom: 10px;
+    margin-bottom: 0.75rem;
     padding: 0.5rem 0;
-    text-align: center;
+    text-align: left;
+    color: $color-primary-white;
+  }
+
+  /* Adjust LEGO Logo Size */
+  &__logo {
+    width: 150px;
+    margin-bottom: 1rem;
   }
 }
