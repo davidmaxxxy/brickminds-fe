@@ -129,19 +129,20 @@ const SurveyStage = () => {
           Skip <img src={rightArrow} alt="Skip" />
         </button>
       </div>
-
-      <div className="survey-stage__indicator">
-        <div className="survey-stage__connector"></div>
-        {stages.map((_, index) => (
-          <div
-            key={index + 1}
-            className={`survey-stage__circle${
-              currentStage === index + 1 ? " active" : ""
-            }`}
-          >
-            {index + 1}
-          </div>
-        ))}
+      <div className="survey-stage__content">
+        <div className="survey-stage__indicator">
+          <div className="survey-stage__connector"></div>
+          {stages.map((_, index) => (
+            <div
+              key={index + 1}
+              className={`survey-stage__circle${
+                currentStage === index + 1 ? " active" : ""
+              }`}
+            >
+              {index + 1}
+            </div>
+          ))}
+        </div>
       </div>
 
       {currentStage === stages.length ? (
@@ -185,6 +186,8 @@ const SurveyStage = () => {
                     onChange={handleSliderChange}
                     className="survey-stage__slider"
                   />
+                  <p className="survey-stage__age-display">Enter Age</p>
+
                   <input
                     type="number"
                     min="0"
@@ -194,7 +197,6 @@ const SurveyStage = () => {
                     className="survey-stage__age-input"
                     placeholder="Enter age"
                   />
-                  <div className="survey-stage__age-display">Age: {age}</div>
                 </div>
               );
             } else {

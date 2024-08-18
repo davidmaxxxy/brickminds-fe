@@ -19,7 +19,7 @@ const Header = ({ resetSurvey }) => {
             alt="mobile-svg"
             className="mobile--navbar__menuSvg"
           />
-          <Link to="/" onClick={resetSurvey}>
+          <Link to="/">
             <img src={logo} alt="LEGO Logo" className="mobile--navbar__logo" />
           </Link>
         </div>
@@ -80,7 +80,7 @@ const Header = ({ resetSurvey }) => {
                 <Link to={""}>HELP</Link>
               </li>
               <li className="tablet--navbar__navigation-links-item--bgWhite">
-                <Link to={""}>DREAMZZZ</Link>
+                <Link to={"/survey"}>GIFT FINDER</Link>
               </li>
             </ul>
           </div>
