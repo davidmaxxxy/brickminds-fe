@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./SurveyStage.scss";
-import legoHead1 from "../../assets/images/lego_head-SVG.png";
-import image1 from "../../assets/images/quiz pictures/Type=build-your-own.jpg";
-import image2 from "../../assets/images/quiz pictures/Type=favorite-charater.jpg";
-import image3 from "../../assets/images/quiz pictures/Type=beginner-builder.jpg";
-import image4 from "../../assets/images/quiz pictures/Type=experienced builder.jpg";
-import image5 from "../../assets/images/quiz pictures/Type=master-builder.jpg";
-import image6 from "../../assets/images/quiz pictures/Type=education.jpg";
-import image7 from "../../assets/images/quiz pictures/Type=entertainment.jpg";
+import legoHead1 from "../../assets/Images/lego_head-SVG.png";
+import image1 from "../../assets/Images/quiz_pictures/build-your-own.jpg";
+import image2 from "../../assets/Images/quiz_pictures/favorite-charater.jpg";
+import image3 from "../../assets/Images/quiz_pictures/beginner-builder.jpg";
+import image4 from "../../assets/Images/quiz_pictures/experienced_builder.jpg";
+import image5 from "../../assets/Images/quiz_pictures/master-builder.jpg";
+import image6 from "../../assets/Images/quiz_pictures/education.jpg";
+import image7 from "../../assets/Images/quiz_pictures/entertainment.jpg";
 
 import leftArrow from "../../assets/icons/direction=left small.svg";
 import rightArrow from "../../assets/icons/direction=right.svg";
@@ -33,7 +33,7 @@ const SurveyStage = () => {
       question: "Do they like to?",
       choices: [
         { id: 1, image: image1, label: "Build Their Own Stories" },
-        { id: 2, image: image2, label: "Play with Their Favourite Character" },
+        { id: 2, image: image2, label: "Play with Their Favorites Character" },
       ],
     },
     {
