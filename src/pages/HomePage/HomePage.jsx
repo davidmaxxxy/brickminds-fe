@@ -1,7 +1,14 @@
 import React from "react";
 import "./HomePage.scss";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigation = useNavigate();
+
+  const handleNavigationClick = () => {
+    navigation("/survey");
+  };
+
   return (
     <div className="main-content">
       <h1 className="main-content--title">
@@ -12,7 +19,9 @@ const HomePage = () => {
         <span className="span-5">gift?</span>
       </h1>
 
-      <button className="gift--finder-btn">Launch the Gift Finder</button>
+      <button className="gift--finder-btn" onClick={handleNavigationClick}>
+        <p>Launch the Gift Finder </p>
+      </button>
     </div>
   );
 };
