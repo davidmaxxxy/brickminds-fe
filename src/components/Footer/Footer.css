@@ -8,7 +8,6 @@
   line-height: 20px;
   /* Container for the LEGO logo and related links */
   /* Container for the ABOUT US, SUPPORT, ATTRACTIONS, MORE FROM US sections */
-  /* Individual sections within the sections container */
   /* Styling for the titles in each section */
   /* Styling for each item in the footer */
   /* Adjust LEGO Logo Size */
@@ -17,21 +16,22 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 0.5rem;
+  padding: 0 5rem;
 }
 .footer__container--logo-links {
   flex: 1;
-  min-width: 200px;
+  min-width: 100px;
   display: flex;
   flex-direction: column;
-  margin-right: 3rem; /* Space between the two main containers */
+  margin-right: 1rem;
   align-items: flex-start;
 }
 .footer__container--sections {
   display: flex;
   justify-content: space-between;
-  flex: 3; /* Takes more space than the logo/links container */
-  gap: 2rem;
+  flex: 2;
+  gap: 0.2rem;
 }
 .footer__container--about, .footer__container--support, .footer__container--attractions, .footer__container--more {
   display: flex;
@@ -41,7 +41,7 @@
 }
 .footer__title {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 700;
   margin-bottom: 1rem;
   line-height: 20px;
 }
@@ -52,6 +52,6 @@
   color: #ffffff;
 }
 .footer__logo {
-  width: 150px;
+  width: 100px;
   margin-bottom: 1rem;
 }/*# sourceMappingURL=Footer.css.map */
