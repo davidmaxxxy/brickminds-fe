@@ -20,6 +20,8 @@ const SurveyStage = () => {
   const [manualAgeInput, setManualAgeInput] = useState("");
   const navigate = useNavigate();
 
+
+
   const stages = [
     {
       question: "How old are they?",
@@ -216,7 +218,7 @@ const SurveyStage = () => {
                     type="number"
                     min="0"
                     max="123"
-                    value={manualAgeInput}
+                    value={age}
                     onChange={handleManualAgeInput}
                     className="survey-stage__age-input"
                     placeholder="Enter age"
@@ -242,7 +244,7 @@ const SurveyStage = () => {
           })}
         </div>
       )}
-      {!currentStage === stages.length && (
+      {!currentStage !== stages.length && (
         <div className="survey-stage__next-button__container">
           <button
             className="survey-stage__next-button"
