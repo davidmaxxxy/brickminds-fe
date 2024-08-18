@@ -3,7 +3,7 @@ import "../Header/Header.scss";
 import { Link } from "react-router-dom";
 import menuSvg from "../../assets/icons/icons8-menu.svg";
 import searchSvg from "../../assets/icons/icons8-search.svg";
-import lego_head from "../../assets/logo/lego_head-SVG.png";
+import lego_head from "../../assets/images/lego_head-SVG.png";
 import favorite from "../../assets/icons/icons8-love-24.png";
 import cart from "../../assets/icons/icons8-cart-48.png";
 import logo from "../../assets/logo/LEGO_logo.svg.webp";

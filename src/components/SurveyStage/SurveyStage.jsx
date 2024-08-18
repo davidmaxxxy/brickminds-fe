@@ -1,54 +1,135 @@
 import React, { useState } from "react";
 import "./SurveyStage.scss";
-import image1 from "../../assets/images/lego-img-round-1.jpeg";
-import image2 from "../../assets/images/lego-img-round-2.jpg";
-import image3 from "../../assets/images/lego-img-round-3.jpg";
+import legoHead1 from "../../assets/images/lego_head-SVG.png";
+import image1 from "../../assets/images/quiz pictures/Type=build-your-own.jpg";
+import image2 from "../../assets/images/quiz pictures/Type=favorite-charater.jpg";
+import image3 from "../../assets/images/quiz pictures/Type=beginner-builder.jpg";
+import image4 from "../../assets/images/quiz pictures/Type=experienced builder.jpg";
+import image5 from "../../assets/images/quiz pictures/Type=master-builder.jpg";
+import image6 from "../../assets/images/quiz pictures/Type=education.jpg";
+import image7 from "../../assets/images/quiz pictures/Type=entertainment.jpg";
+
+import leftArrow from "../../assets/icons/direction=left small.svg";
+import rightArrow from "../../assets/icons/direction=right.svg";
 
 const SurveyStage = () => {
   const [currentStage, setCurrentStage] = useState(1);
+  const [selectedChoice, setSelectedChoice] = useState(null);
+  const [age, setAge] = useState(0);
+  const [manualAgeInput, setManualAgeInput] = useState("");
 
   const stages = [
     {
-      question:
-        "Imagine you're going on an adventure. What would you pack in your backpack?",
+      question: "How old are they?",
       choices: [
-        { id: 1, image: image1, label: "Map" },
-        { id: 2, image: image2, label: "Compass" },
-        { id: 3, image: image3, label: "Torch" },
+        {
+          id: 1,
+          image: legoHead1,
+          type: "slider",
+        },
       ],
     },
     {
-      question: "What is your favorite color?",
+      question: "Do they like to?",
       choices: [
-        { id: 1, image: image1, label: "Red" },
-        { id: 2, image: image2, label: "Green" },
-        { id: 3, image: image3, label: "Blue" },
+        { id: 1, image: image1, label: "Build Their Own Stories" },
+        { id: 2, image: image2, label: "Play with Their Favourite Character" },
       ],
     },
     {
-      question: "Choose a hobby:",
+      question: "Is It A Gift for",
       choices: [
-        { id: 1, image: image1, label: "Reading" },
-        { id: 2, image: image2, label: "Hiking" },
-        { id: 3, image: image3, label: "Swimming" },
+        { id: 1, image: image3, label: "A Beginner Builder" },
+        { id: 2, image: image4, label: "Builder With Some Experience" },
+        { id: 3, image: image5, label: "Master Builder" },
+      ],
+    },
+    {
+      question: "What's The Aim Of The Gift?",
+      choices: [
+        { id: 1, image: image6, label: "Educational" },
+        { id: 2, image: image7, label: "Entertainment" },
+      ],
+    },
+    {
+      question: "How Much Do You Want to Spend?",
+      choices: [
+        { id: 1, label: "£0-£20", brickClass: "survey-stage__brick--range-1" },
+        { id: 2, label: "£20-£50", brickClass: "survey-stage__brick--range-2" },
+        {
+          id: 3,
+          label: "£50-£100",
+          brickClass: "survey-stage__brick--range-3",
+        },
+        {
+          id: 4,
+          label: "£100-£200",
+          brickClass: "survey-stage__brick--range-4",
+        },
+        { id: 5, label: "£200+", brickClass: "survey-stage__brick--range-5" },
       ],
     },
   ];
 
   const handleChoiceClick = (choiceId) => {
-    console.log(
-      `User has selected choice: ${choiceId} for stage ${currentStage}`
-    );
+    setSelectedChoice(choiceId);
+  };
 
+  const handleNextStage = () => {
     if (currentStage < stages.length) {
       setCurrentStage(currentStage + 1);
+      setSelectedChoice(null);
     } else {
       console.log(`Survey complete!`);
     }
   };
 
+  const handleBack = () => {
+    if (currentStage > 1) {
+      setCurrentStage(currentStage - 1);
+      setSelectedChoice(null);
+    }
+  };
+
+  const handleSkip = () => {
+    if (currentStage < stages.length) {
+      setCurrentStage(currentStage + 1);
+      setSelectedChoice(null);
+    }
+  };
+
+  const handleSliderChange = (event) => {
+    const newAge = event.target.value;
+    setAge(newAge);
+    setSelectedChoice(1);
+  };
+
+  const handleManualAgeInput = (event) => {
+    const newAge = event.target.value;
+    setManualAgeInput(newAge);
+    setAge(newAge);
+    setSelectedChoice(1);
+  };
+
   return (
     <div className="survey-stage">
+      <div className="survey-stage__navigation">
+        <button
+          className="survey-stage__back-button"
+          onClick={handleBack}
+          disabled={currentStage === 1}
+        >
+          <img src={leftArrow} alt="Back" /> Back
+        </button>
+        <button
+          className="survey-stage__skip-button"
+          onClick={handleSkip}
+          disabled={currentStage === stages.length}
+        >
+          Skip <img src={rightArrow} alt="Skip" />
+        </button>
+      </div>
+
       <div className="survey-stage__indicator">
         <div className="survey-stage__connector"></div>
         {stages.map((_, index) => (
@@ -63,22 +144,86 @@ const SurveyStage = () => {
         ))}
       </div>
 
-      <div className="survey-stage__question">
-        {stages[currentStage - 1].question}
-      </div>
-
-      <div className="survey-stage__choices">
-        {stages[currentStage - 1].choices.map((choice) => (
-          <div
-            key={choice.id}
-            className="survey-stage__choice"
-            onClick={() => handleChoiceClick(choice.id)}
-          >
-            <img src={choice.image} alt={choice.label} />
-            <div className="survey-stage__choice-label">{choice.label}</div>
+      {currentStage === stages.length ? (
+        <div className="survey-stage__price-range">
+          <div className="survey-stage__price-question">
+            {stages[currentStage - 1].question}
           </div>
-        ))}
-      </div>
+          <div className="survey-stage__bricks-container">
+            {stages[currentStage - 1].choices.map((choice) => (
+              <div
+                key={choice.id}
+                className={`survey-stage__brick ${choice.brickClass} ${
+                  selectedChoice === choice.id ? "selected" : ""
+                }`}
+                onClick={() => handleChoiceClick(choice.id)}
+              >
+                {choice.label}
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="survey-stage__choices">
+          {stages[currentStage - 1].choices.map((choice) => {
+            if (choice.type === "slider") {
+              return (
+                <div
+                  key={choice.id}
+                  className="survey-stage__choice--first-stage"
+                >
+                  <img
+                    src={choice.image}
+                    alt={`Lego head for age ${age}`}
+                    className="survey-stage__age-image"
+                  />
+                  <input
+                    type="range"
+                    min="0"
+                    max="123"
+                    value={age}
+                    onChange={handleSliderChange}
+                    className="survey-stage__slider"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    max="123"
+                    value={manualAgeInput}
+                    onChange={handleManualAgeInput}
+                    className="survey-stage__age-input"
+                    placeholder="Enter age"
+                  />
+                  <div className="survey-stage__age-display">Age: {age}</div>
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  key={choice.id}
+                  className={`survey-stage__choice${
+                    selectedChoice === choice.id ? " selected" : ""
+                  }`}
+                  onClick={() => handleChoiceClick(choice.id)}
+                >
+                  <img src={choice.image} alt={choice.label} />
+                  <div className="survey-stage__choice-label">
+                    {choice.label}
+                  </div>
+                </div>
+              );
+            }
+          })}
+        </div>
+      )}
+
+      <button
+        className="survey-stage__next-button"
+        onClick={handleNextStage}
+        disabled={!selectedChoice}
+      >
+        Next Question
+      </button>
     </div>
   );
 };

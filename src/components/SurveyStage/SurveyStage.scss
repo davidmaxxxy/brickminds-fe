@@ -5,6 +5,44 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  width: 80%;
+  margin: 0 auto;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__back-button,
+  &__skip-button {
+    background-color: transparent;
+    border: 2px solid $color-secondary-1;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-body;
+    color: $color-secondary-1;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: $color-neutral-light;
+      color: $color-neutral-light;
+    }
+  }
 
   &__indicator {
     position: relative;
@@ -37,7 +75,7 @@
     color: $color-primary-white;
     font-weight: $font-weight-bold;
     z-index: 3;
-    margin: 0 10px; /* Spacing between circles */
+    margin: 0 10px;
 
     &.active {
       background-color: $color-secondary-3;
@@ -54,28 +92,59 @@
 
   &__choices {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 0 auto;
     width: 100%;
-    gap: 1rem;
   }
 
-  &__choice {
-    flex: 1;
-    margin: 0 1rem;
+  &__choice--first-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     cursor: pointer;
 
     img {
       max-width: 100%;
-      width: 300px;
+      width: 210px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      border: 0;
+    }
+  }
+
+  &__choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+
+    img {
+      width: 100%;
+      max-width: 300px;
       height: 300px;
       object-fit: cover;
-      border: 2px solid transparent;
-      border-radius: 10px;
+      border: 7px solid transparent;
+      border-radius: 50%;
+      transition: border-color 0.3s ease;
 
       &:hover {
         border-color: $color-secondary-1;
       }
+    }
+
+    &.selected img {
+      border-color: $color-secondary-3;
     }
 
     &-label {
@@ -83,5 +152,192 @@
       font-size: $font-size-body;
       font-weight: $font-weight-regular;
     }
+  }
+
+  &__slider-container {
+    position: relative;
+    width: 100%;
+  }
+
+  &__slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 20px;
+    background: $color-neutral-light;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 2rem;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 40px;
+      height: 40px;
+      background: $color-secondary-1;
+      border-radius: 50%;
+      border: 2px solid $color-primary-white;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:after {
+        content: url("../../assets/icons/direction=right.svg");
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &::-moz-range-thumb {
+      width: 30px;
+      height: 30px;
+      background: $color-secondary-1;
+      border-radius: 50%;
+      border: 2px solid $color-primary-white;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:after {
+        content: url("../../assets/icons/direction=right.svg");
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__age-input {
+    width: 100px;
+    padding: 1rem 0.5rem;
+    border-radius: 10px;
+    border: solid $color-neutral-light;
+    font-size: $font-size-body;
+    font-weight: $font-weight-regular;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &__age-display {
+    font-size: $font-size-body;
+    font-weight: $font-weight-bold;
+  }
+
+  &__next-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-neutral-light;
+    color: $color-primary-black;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: $font-size-body;
+    font-weight: $font-weight-bold;
+    border-radius: 20px;
+    margin-top: 2rem;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled) {
+      background-color: $color-secondary-1;
+      color: $color-primary-white;
+    }
+  }
+
+  /* Styles for the price range stage */
+  &__price-range {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+  }
+
+  &__price-question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: $font-size-title-2;
+    font-weight: $font-weight-bold;
+    width: 50%;
+  }
+
+  &__bricks-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  &__brick {
+    background-color: $color-primary-white;
+    color: $color-primary-white;
+    border-radius: 5px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    font-weight: $font-weight-bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      border-color: $color-primary-white;
+      color: $color-primary-white;
+    }
+
+    &.selected {
+      background-color: $color-secondary-1;
+      border-color: $color-secondary-1;
+      color: $color-primary-white;
+      flex-grow: 1;
+    }
+  }
+
+  .survey-stage__brick.selected ~ .survey-stage__brick:not(.selected) {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+  }
+
+  &__brick--range-1 {
+    background-color: $color-secondary-1;
+  }
+
+  &__brick--range-2 {
+    background-color: $color-secondary-2;
+  }
+
+  &__brick--range-3 {
+    background-color: $color-secondary-3;
+  }
+
+  &__brick--range-4 {
+    background-color: $color-secondary-4;
+  }
+
+  &__brick--range-5 {
+    background-color: $color-secondary-5;
   }
 }
