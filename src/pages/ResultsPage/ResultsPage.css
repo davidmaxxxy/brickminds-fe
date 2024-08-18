@@ -61,7 +61,7 @@
   align-self: flex-start;
 }
 .results-page__product-card--new-box {
-  background-color: #f40008;
+  background-color: #e96e14;
   padding: 0.25rem 0.5rem;
   border-radius: 5px;
   font-weight: bold;
@@ -145,7 +145,7 @@
   border: 2px solid black;
 }
 .results-page__product-card--details--buttons-buy-now {
-  background-color: #f40008;
+  background-color: #e96e14;
   color: black;
 }
 .results-page__button-container--copy-share-button {
