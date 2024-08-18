@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SurveyStage.scss";
-import legoHead1 from "../../assets/Images/lego_head-SVG.png";
+import legoHead1 from "../../assets/icons/lego-head-7.svg";
 import image1 from "../../assets/Images/quiz_pictures/build-your-own.jpg";
 import image2 from "../../assets/Images/quiz_pictures/favorite-charater.jpg";
 import image3 from "../../assets/Images/quiz_pictures/beginner-builder.jpg";
@@ -8,7 +8,6 @@ import image4 from "../../assets/Images/quiz_pictures/experienced_builder.jpg";
 import image5 from "../../assets/Images/quiz_pictures/master-builder.jpg";
 import image6 from "../../assets/Images/quiz_pictures/education.jpg";
 import image7 from "../../assets/Images/quiz_pictures/entertainment.jpg";
-
 import leftArrow from "../../assets/icons/direction=left small.svg";
 import rightArrow from "../../assets/icons/direction=right.svg";
 
@@ -70,6 +69,14 @@ const SurveyStage = () => {
       ],
     },
   ];
+
+  
+  const handleApiCallWithSelectedInformation = (choiceID) => {
+    // make your api call here
+  };
+
+
+
 
   const handleChoiceClick = (choiceId) => {
     setSelectedChoice(choiceId);
@@ -153,11 +160,11 @@ const SurveyStage = () => {
           <div className="survey-stage__bricks-container">
             {stages[currentStage - 1].choices.map((choice) => (
               <div
+                onClick={() => handleApiCallWithSelectedInformation(choice.id)}
                 key={choice.id}
                 className={`survey-stage__brick ${choice.brickClass} ${
                   selectedChoice === choice.id ? "selected" : ""
                 }`}
-                onClick={() => handleChoiceClick(choice.id)}
               >
                 {choice.label}
               </div>
@@ -218,14 +225,17 @@ const SurveyStage = () => {
           })}
         </div>
       )}
-
-      <button
-        className="survey-stage__next-button"
-        onClick={handleNextStage}
-        disabled={!selectedChoice}
-      >
-        Next Question
-      </button>
+      {!currentStage === stages.length && (
+        <div className="survey-stage__next-button__container">
+          <button
+            className="survey-stage__next-button"
+            onClick={handleNextStage}
+            disabled={!selectedChoice}
+          >
+            Next Question
+          </button>
+        </div>
+      )}
     </div>
   );
 };
