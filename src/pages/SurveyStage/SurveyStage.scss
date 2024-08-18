@@ -38,11 +38,13 @@
       color: $color-neutral-light;
     }
   }
+
   &__content {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   &__indicator {
     position: relative;
     display: flex;
@@ -220,7 +222,7 @@
     font-weight: $font-weight-regular;
     text-align: center;
     margin-bottom: 2rem;
-    ::placeholder{
+    ::placeholder {
       color: red;
     }
 
@@ -347,5 +349,35 @@
 
   &__brick--range-5 {
     background-color: $color-secondary-5;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      font-weight: 900;
+      span {
+        display: inline-block;
+        @include mixin.tablet {
+          font-size: 5rem;
+        }
+      }
+      .span-1 {
+        color: $color-secondary-1;
+      }
+      .span-2 {
+        color: $color-secondary-2;
+      }
+      .span-3 {
+        color: $color-secondary-3;
+      }
+      .span-4 {
+        color: $color-secondary-4;
+      }
+    }
   }
 }

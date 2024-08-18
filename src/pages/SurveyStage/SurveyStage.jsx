@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SurveyStage.scss";
 import legoHead1 from "../../assets/Images/lego_head-SVG.png";
 import image1 from "../../assets/Images/quiz_pictures/build-your-own.jpg";
@@ -15,8 +16,10 @@ import rightArrow from "../../assets/icons/direction=right.svg";
 const SurveyStage = () => {
   const [currentStage, setCurrentStage] = useState(1);
   const [selectedChoice, setSelectedChoice] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [age, setAge] = useState(0);
   const [manualAgeInput, setManualAgeInput] = useState("");
+  const navigate = useNavigate();
 
   const stages = [
     {
@@ -80,7 +83,12 @@ const SurveyStage = () => {
       setCurrentStage(currentStage + 1);
       setSelectedChoice(null);
     } else {
-      console.log(`Survey complete!`);
+      // Final stage: show loading and navigate to results page
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate("/results"); // Redirect to the results page
+      }, 3000);
     }
   };
 
@@ -110,6 +118,19 @@ const SurveyStage = () => {
     setAge(newAge);
     setSelectedChoice(1);
   };
+
+  if (isLoading) {
+    return (
+      <div className="survey-stage__loader">
+        <h1>
+          <span className="span-1">Building</span>{" "}
+          <span className="span-2">your</span>{" "}
+          <span className="span-3">perfect</span> <br />
+          <span className="span-4">set...</span>
+        </h1>
+      </div>
+    );
+  }
 
   return (
     <div className="survey-stage">
@@ -224,7 +245,7 @@ const SurveyStage = () => {
         onClick={handleNextStage}
         disabled={!selectedChoice}
       >
-        Next Question
+        {currentStage === stages.length ? "Generate Results" : "Next Question"}
       </button>
     </div>
   );

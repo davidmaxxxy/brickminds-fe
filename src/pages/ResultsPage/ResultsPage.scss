@@ -1,0 +1,212 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as mixin;
+
+.results-page {
+  padding: 2rem;
+
+  &__top-container {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .results-page__restart-button {
+      background-color: $color-secondary-1;
+      padding: 0.75rem 2rem;
+      color: $color-primary-white;
+      border-radius: 1rem;
+      border: none;
+      cursor: pointer;
+      &:hover {
+        background-color: $color-secondary-7;
+      }
+    }
+  }
+
+  &__main-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__suggestions-container {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__product-card {
+    border: 1px solid $color-neutral-light;
+    border-radius: 10px;
+    padding: 1.5rem;
+    background-color: $color-primary-white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__product-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__heart-icon {
+      align-self: flex-start;
+    }
+
+    &__new-box {
+      background-color: $color-secondary-5;
+      padding: 0.25rem 0.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      color: $color-primary-white;
+    }
+
+    &__image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 200px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        border-radius: 5px;
+      }
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      &__icons {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        &__icon {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      &__product-name {
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-align: left;
+      }
+
+      &__product-price {
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      &__buttons {
+        display: flex;
+        gap: 1rem;
+
+        .results-page__add-to-bag,
+        .results-page__buy-now {
+          padding: 0.75rem 1.5rem;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-weight: bold;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+
+        .results-page__add-to-bag {
+          background-color: $color-secondary-1;
+          color: $color-primary-white;
+        }
+
+        .results-page__buy-now {
+          background-color: $color-secondary-3;
+          color: $color-primary-white;
+        }
+      }
+    }
+  }
+
+  &__copy-share-button {
+    background-color: $color-secondary-1;
+    padding: 0.75rem 2rem;
+    color: $color-primary-white;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 2rem;
+    &:hover {
+      background-color: $color-secondary-7;
+    }
+  }
+
+  &__gift-card-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__gift-card-image {
+      text-align: center;
+
+      img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    &__gift-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    &__gift-card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    &__gift-card-description {
+      font-size: 1rem;
+    }
+
+    &__buy-gift-card-button {
+      background-color: $color-secondary-1;
+      padding: 0.75rem 2rem;
+      color: $color-primary-white;
+      border-radius: 1rem;
+      border: none;
+      cursor: pointer;
+      align-self: flex-start;
+      &:hover {
+        background-color: $color-secondary-7;
+      }
+    }
+  }
+}
