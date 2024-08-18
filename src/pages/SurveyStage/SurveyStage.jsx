@@ -73,13 +73,9 @@ const SurveyStage = () => {
     },
   ];
 
-  
   const handleApiCallWithSelectedInformation = (choiceID) => {
-    // make your api call here
+    navigate("/results");
   };
-
-
-
 
   const handleChoiceClick = (choiceId) => {
     setSelectedChoice(choiceId);
