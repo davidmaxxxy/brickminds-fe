@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SurveyStage.scss";
 import legoHead1 from "../../assets/icons/lego-head-7.svg";
-import image1 from "../../assets/Images/quiz_pictures/build-your-own.jpg";
-import image2 from "../../assets/Images/quiz_pictures/favorite-charater.jpg";
-import image3 from "../../assets/Images/quiz_pictures/beginner-builder.jpg";
-import image4 from "../../assets/Images/quiz_pictures/experienced_builder.jpg";
-import image5 from "../../assets/Images/quiz_pictures/master-builder.jpg";
-import image6 from "../../assets/Images/quiz_pictures/education.jpg";
-import image7 from "../../assets/Images/quiz_pictures/entertainment.jpg";
+import image1 from "../../assets/images/quiz_pictures/build-your-own.jpg";
+import image2 from "../../assets/images/quiz_pictures/favorite-charater.jpg";
+import image3 from "../../assets/images/quiz_pictures/beginner-builder.jpg";
+import image4 from "../../assets/images/quiz_pictures/experienced_builder.jpg";
+import image5 from "../../assets/images/quiz_pictures/master-builder.jpg";
+import image6 from "../../assets/images/quiz_pictures/education.jpg";
+import image7 from "../../assets/images/quiz_pictures/entertainment.jpg";
 import leftArrow from "../../assets/icons/direction=left small.svg";
 import rightArrow from "../../assets/icons/direction=right.svg";
 
@@ -23,17 +23,14 @@ const SurveyStage = () => {
   const [giftAim, setGiftAim] = useState("");
   const navigate = useNavigate();
 
-
-
   const handleApiCallWithSelectedInformation = async (selectedPrice) => {
-   
     setIsLoading(true);
     try {
       const { status, data } = await axios.post(
-        "http://localhost:5001/api/v1/generate-recommendation-themes",
+        "https://brickminds-server.onrender.com/api/v1/generate-recommendation-themes",
         {
-          age: age ,
-          priceRange :selectedPrice,
+          age: age,
+          priceRange: selectedPrice,
           likes,
           experienceLevel,
           giftAim,
@@ -165,7 +162,10 @@ const SurveyStage = () => {
             ].map((choice) => (
               <div
                 key={choice.id}
-                onClick={() => handleApiCallWithSelectedInformation(choice.label)}
+                onClick={() => {
+                  setSelectedChoice(choice.id);
+                  handleApiCallWithSelectedInformation(choice.label);
+                }}
                 className={`survey-stage__brick ${choice.brickClass} ${
                   selectedChoice === choice.id ? "selected" : ""
                 }`}
@@ -220,7 +220,10 @@ const SurveyStage = () => {
                   className={`survey-stage__choice${
                     selectedChoice === choice.id ? " selected" : ""
                   }`}
-                  onClick={() => setLikes(choice.label)}
+                  onClick={() => {
+                    setSelectedChoice(choice.id);
+                    setLikes(choice.label);
+                  }}
                 >
                   <img src={choice.image} alt={choice.label} />
                   <div className="survey-stage__choice-label">
@@ -243,7 +246,10 @@ const SurveyStage = () => {
                   className={`survey-stage__choice${
                     selectedChoice === choice.id ? " selected" : ""
                   }`}
-                  onClick={() => setExperienceLevel(choice.label)}
+                  onClick={() => {
+                    setSelectedChoice(choice.id);
+                    setExperienceLevel(choice.label);
+                  }}
                 >
                   <img src={choice.image} alt={choice.label} />
                   <div className="survey-stage__choice-label">
@@ -265,7 +271,10 @@ const SurveyStage = () => {
                   className={`survey-stage__choice${
                     selectedChoice === choice.id ? " selected" : ""
                   }`}
-                  onClick={() => setGiftAim(choice.label)}
+                  onClick={() => {
+                    setSelectedChoice(choice.id);
+                    setGiftAim(choice.label);
+                  }}
                 >
                   <img src={choice.image} alt={choice.label} />
                   <div className="survey-stage__choice-label">

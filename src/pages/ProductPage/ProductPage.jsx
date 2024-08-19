@@ -6,7 +6,7 @@ import ageIcon from "../../assets/icons/birthday-icon 48x48.svg";
 import piecesIcon from "../../assets/icons/size=Default.svg";
 import starIcon from "../../assets/icons/carbon_star-filled.svg";
 import basketIcon from "../../assets/icons/icons8-cart-48.png";
-import legoGiftCardImage from "../../assets/Images/gift_cards/Gift_Card 2.png";
+import legoGiftCardImage from "../../assets/images/gift_cards/Gift_Card 2.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -21,11 +21,13 @@ const ProductPage = () => {
     const fetchProducts = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:5001/api/v1/products",
+          "https://brickminds-server.onrender.com/api/v1/products",
           {
             params: {
-              priceRange: priceRange,
-              suggested_Themes
+              priceRange,
+              theme_one: suggested_Themes[0],
+              theme_two: suggested_Themes[1],
+              theme_three: suggested_Themes[2],
             },
           }
         );
@@ -41,7 +43,7 @@ const ProductPage = () => {
     if (priceRange && suggested_Themes) {
       fetchProducts();
     } else {
-      setLoading(false); // Stop loading if there's no priceRange or suggested_Themes
+      setLoading(false);
     }
   }, [priceRange, suggested_Themes]);
 
@@ -59,7 +61,12 @@ const ProductPage = () => {
       <div className="results-page__top-container">
         <h1>These should be perfect</h1>
         <p>Nothing suits your criteria?</p>
-        <button onClick={()=>{  navigate("/")}} className="results-page__top-container--restart-button">
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className="results-page__top-container--restart-button"
+        >
           Restart Survey
         </button>
       </div>
