@@ -38,11 +38,13 @@
       color: $color-neutral-light;
     }
   }
+
   &__content {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   &__indicator {
     position: relative;
     display: flex;
@@ -95,7 +97,7 @@
     gap: 2rem;
     margin: 0 auto;
     width: 100%;
-    padding-top: 2rem;
+    padding: 3rem 0;
   }
 
   &__choice--first-stage {
@@ -134,9 +136,9 @@
 
     img {
       width: 100%;
-      max-width: 300px;
-      height: 300px;
-      object-fit: cover;
+      max-width: 15rem;
+      height: 15rem;
+      object-fit: contain;
       border: 7px solid transparent;
       border-radius: 50%;
       transition: border-color 0.3s ease;
@@ -152,8 +154,8 @@
 
     &-label {
       margin-top: 1rem;
-      font-size: $font-size-body;
-      font-weight: $font-weight-regular;
+      font-size: $font-size-title-1;
+      font-weight: $font-weight-bold;
     }
   }
 
@@ -164,12 +166,13 @@
 
   &__slider {
     -webkit-appearance: none;
-    width: 100%;
+    // padding: 2rem 0;
+    width: 40vw;
     height: 20px;
     background: $color-neutral-light;
-    border-radius: 5px;
+    border-radius: 50px;
     outline: none;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
     cursor: pointer;
 
     &::-webkit-slider-thumb {
@@ -220,7 +223,7 @@
     font-weight: $font-weight-regular;
     text-align: center;
     margin-bottom: 2rem;
-    ::placeholder{
+    ::placeholder {
       color: red;
     }
 
@@ -259,6 +262,12 @@
     &:not(:disabled) {
       background-color: $color-secondary-1;
       color: $color-primary-white;
+    }
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -301,6 +310,7 @@
     font-weight: $font-weight-bold;
     transition: background-color 0.3s ease, border-color 0.3s ease;
     width: 100%;
+    height: 5rem;
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -347,5 +357,35 @@
 
   &__brick--range-5 {
     background-color: $color-secondary-5;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      font-weight: 900;
+      span {
+        display: inline-block;
+        @include mixin.tablet {
+          font-size: 5rem;
+        }
+      }
+      .span-1 {
+        color: $color-secondary-1;
+      }
+      .span-2 {
+        color: $color-secondary-2;
+      }
+      .span-3 {
+        color: $color-secondary-3;
+      }
+      .span-4 {
+        color: $color-secondary-4;
+      }
+    }
   }
 }
