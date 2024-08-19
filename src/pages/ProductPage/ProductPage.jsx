@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import "../ResultsPage/ResultsPage.scss";
+import "./ProductPage.scss";
 import heartIcon from "../../assets/icons/icons8-love-24.png";
 import ageIcon from "../../assets/icons/birthday-icon 48x48.svg";
 import piecesIcon from "../../assets/icons/size=Default.svg";
@@ -8,23 +8,28 @@ import starIcon from "../../assets/icons/carbon_star-filled.svg";
 import basketIcon from "../../assets/icons/icons8-cart-48.png";
 import legoGiftCardImage from "../../assets/Images/gift_cards/Gift_Card 2.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const ResultsPage = () => {
+const ProductPage = () => {
   const location = useLocation();
   const { priceRange, suggested_Themes } = location.state || {};
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.post(
+        const { data } = await axios.get(
           "http://localhost:5001/api/v1/products",
           {
-            priceRange,
-            suggested_Themes,
+            params: {
+              priceRange: priceRange,
+              suggested_Themes
+            },
           }
         );
+
         setProducts(data.lego_products);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -54,7 +59,7 @@ const ResultsPage = () => {
       <div className="results-page__top-container">
         <h1>These should be perfect</h1>
         <p>Nothing suits your criteria?</p>
-        <button className="results-page__top-container--restart-button">
+        <button onClick={()=>{  navigate("/")}} className="results-page__top-container--restart-button">
           Restart Survey
         </button>
       </div>
@@ -76,7 +81,7 @@ const ResultsPage = () => {
                 </div>
                 <div className="results-page__product-card--image-container">
                   <img
-                    src={product.imageUrl}
+                    src={product.image_url}
                     alt={product.name}
                     onError={(e) => {
                       e.target.src = legoGiftCardImage; // Fallback image
@@ -147,4 +152,4 @@ const ResultsPage = () => {
   );
 };
 
-export default ResultsPage;
+export default ProductPage;

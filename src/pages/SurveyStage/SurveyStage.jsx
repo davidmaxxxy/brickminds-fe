@@ -18,53 +18,48 @@ const SurveyStage = () => {
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [age, setAge] = useState(0);
-  const [manualAgeInput, setManualAgeInput] = useState("");
   const [likes, setLikes] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
   const [giftAim, setGiftAim] = useState("");
   const [priceRange, setPriceRange] = useState("");
-
+  // console.log("age", age);
+  // console.log("likes", likes);
+  // console.log("experienceLevel", experienceLevel);
+  // console.log("giftAim", giftAim);
+  // console.log("priceRange", priceRange);
   const navigate = useNavigate();
 
-  const handleChoiceClick = (choiceId) => {
-    setSelectedChoice(choiceId);
-    // Update states based on current stage
-    if (currentStage === 2) setLikes(choiceId);
-    if (currentStage === 3) setExperienceLevel(choiceId);
-    if (currentStage === 4) setGiftAim(choiceId);
-    if (currentStage === 5) {
-      setPriceRange(choiceId);
-      handleApiCallWithSelectedInformation();
-    }
-  };
+  // const handleChoiceClick = (choiceId) => {
+  //   setSelectedChoice(choiceId);
+  //   // Update states based on current stage
+  //   if (currentStage === 2) setLikes(choiceId);
+  //   if (currentStage === 3) setExperienceLevel(choiceId);
+  //   if (currentStage === 4) setGiftAim(choiceId);
+  //   if (currentStage === 5) {
+  //     setPriceRange(choiceId);
+  //     handleApiCallWithSelectedInformation();
+  //   }
+  // };
 
-  const handleApiCallWithSelectedInformation = async () => {
+  const handleApiCallWithSelectedInformation = async (selectedPrice) => {
+   
     setIsLoading(true);
     try {
-      // /api/v1/generate-recommendation-themes ----wrong 
-      //  "http://localhost:5001/api/v1/generate-recommendation-themes" ---correct 
-      // u didn't add the domain 
-      // i changed to axios cox its more easy to use n less code 
-      //  and have move the got product api call to the product page con when u get the res from the 
-      // api u have to save it to state the loop through to display them 
       const { status, data } = await axios.post(
         "http://localhost:5001/api/v1/generate-recommendation-themes",
         {
-          age: age || manualAgeInput,
-          priceRange,
+          age: age ,
+          priceRange :selectedPrice,
           likes,
           experienceLevel,
           giftAim,
         }
       );
 
-      if (status === 301) {
-        // when api is 301 then we navigate to results page 
-        // and no need for settime out cox the call to the api wil take time to respond so during that time space
-        //  loading will be true until res is available from the api 
+      if (status === 200) {
         const { priceRange, suggested_Themes } = data;
 
-        navigate("/results", {
+        navigate("/products", {
           state: { priceRange, suggested_Themes },
         });
       } else {
@@ -100,13 +95,6 @@ const SurveyStage = () => {
 
   const handleSliderChange = (event) => {
     const newAge = event.target.value;
-    setAge(newAge);
-    setSelectedChoice(1);
-  };
-
-  const handleManualAgeInput = (event) => {
-    const newAge = event.target.value;
-    setManualAgeInput(newAge);
     setAge(newAge);
     setSelectedChoice(1);
   };
@@ -167,33 +155,33 @@ const SurveyStage = () => {
             {[
               {
                 id: 1,
-                label: "£0-£20",
+                label: "0-20",
                 brickClass: "survey-stage__brick--range-1",
               },
               {
                 id: 2,
-                label: "£20-£50",
+                label: "20-50",
                 brickClass: "survey-stage__brick--range-2",
               },
               {
                 id: 3,
-                label: "£50-£100",
+                label: "50-100",
                 brickClass: "survey-stage__brick--range-3",
               },
               {
                 id: 4,
-                label: "£100-£200",
+                label: "100-200",
                 brickClass: "survey-stage__brick--range-4",
               },
               {
                 id: 5,
-                label: "£200+",
+                label: "200-500",
                 brickClass: "survey-stage__brick--range-5",
               },
             ].map((choice) => (
               <div
                 key={choice.id}
-                onClick={() => handleChoiceClick(choice.id)}
+                onClick={() => handleApiCallWithSelectedInformation(choice.label)}
                 className={`survey-stage__brick ${choice.brickClass} ${
                   selectedChoice === choice.id ? "selected" : ""
                 }`}
@@ -225,8 +213,8 @@ const SurveyStage = () => {
                 type="number"
                 min="0"
                 max="123"
-                value={manualAgeInput}
-                onChange={handleManualAgeInput}
+                value={age}
+                onChange={handleSliderChange}
                 className="survey-stage__age-input"
                 placeholder="Enter age"
               />
@@ -248,7 +236,7 @@ const SurveyStage = () => {
                   className={`survey-stage__choice${
                     selectedChoice === choice.id ? " selected" : ""
                   }`}
-                  onClick={() => handleChoiceClick(choice.id)}
+                  onClick={() => setLikes(choice.label)}
                 >
                   <img src={choice.image} alt={choice.label} />
                   <div className="survey-stage__choice-label">
@@ -271,7 +259,7 @@ const SurveyStage = () => {
                   className={`survey-stage__choice${
                     selectedChoice === choice.id ? " selected" : ""
                   }`}
-                  onClick={() => handleChoiceClick(choice.id)}
+                  onClick={() => setExperienceLevel(choice.label)}
                 >
                   <img src={choice.image} alt={choice.label} />
                   <div className="survey-stage__choice-label">
@@ -293,7 +281,7 @@ const SurveyStage = () => {
                   className={`survey-stage__choice${
                     selectedChoice === choice.id ? " selected" : ""
                   }`}
-                  onClick={() => handleChoiceClick(choice.id)}
+                  onClick={() => setGiftAim(choice.label)}
                 >
                   <img src={choice.image} alt={choice.label} />
                   <div className="survey-stage__choice-label">
@@ -310,7 +298,7 @@ const SurveyStage = () => {
           <button
             className="survey-stage__next-button"
             onClick={handleNextStage}
-            disabled={!selectedChoice}
+            // disabled={!selectedChoice}
           >
             Next Question
           </button>
