@@ -21,25 +21,9 @@ const SurveyStage = () => {
   const [likes, setLikes] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
   const [giftAim, setGiftAim] = useState("");
-  const [priceRange, setPriceRange] = useState("");
-  // console.log("age", age);
-  // console.log("likes", likes);
-  // console.log("experienceLevel", experienceLevel);
-  // console.log("giftAim", giftAim);
-  // console.log("priceRange", priceRange);
   const navigate = useNavigate();
 
-  // const handleChoiceClick = (choiceId) => {
-  //   setSelectedChoice(choiceId);
-  //   // Update states based on current stage
-  //   if (currentStage === 2) setLikes(choiceId);
-  //   if (currentStage === 3) setExperienceLevel(choiceId);
-  //   if (currentStage === 4) setGiftAim(choiceId);
-  //   if (currentStage === 5) {
-  //     setPriceRange(choiceId);
-  //     handleApiCallWithSelectedInformation();
-  //   }
-  // };
+
 
   const handleApiCallWithSelectedInformation = async (selectedPrice) => {
    
