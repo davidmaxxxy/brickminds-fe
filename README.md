@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Lego Gift Finder - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Lego Gift Finder tool, a project built to help parents find the perfect Lego gifts for their children or for children of relatives/friends. This tool asks a few simple questions about the child's preferences and returns a list of the best matching Lego products from an external database.
 
-## Available Scripts
+## Problem Statement
+Parents often struggle to find the right gifts for children, especially when it comes to toys like Lego sets. The Lego Gift Finder helps simplify this process by using a questionnaire to filter the best Lego products based on the child's age, interests, and other preferences.
 
-In the project directory, you can run:
+## Features
+- A simple, interactive survey asks users a series of questions.
+- Based on the answers, the backend fetches a list of Lego products from an external database.
+- The front-end displays the recommended Lego sets that best match the criteria specified by the user.
 
-### `npm start`
+## Demo
+The frontend of the project is fully functional and can be accessed through the deployed version. To see it in action, visit the link provided [here](#insert-deployment-link).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How to Run the Frontend Locally
+If you'd like to run the frontend locally, follow the instructions below:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
+- Node.js (v12 or higher) installed on your machine.
+- NPM (Node Package Manager).
 
-### `npm test`
+### Steps to Run Locally:
+1. Clone the repository:
+   [git clone https://github.com/your-username/lego-gift-finder-frontend.git](https://github.com/davidmaxxxy/brickminds-fe)
+2. Navigate to the project directory:
+   - cd lego-gift-finder-frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Install the required dependencies:
+   - npm install
 
-### `npm run build`
+4. Start the development server:
+   - npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application should now be running at http://localhost:3000. You can interact with the survey and explore the user interface.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### NOTE
+Backend Instructions (Important!)
+This project requires a backend to process the user's responses and fetch the matching Lego products from an external database. The backend is not included in this part of the project as it runs separately.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To fully experience the end-to-end (E2E) functionality:
+1. Please follow the instructions provided in the backend README to set up the backend locally. You will need to run the backend server separately and ensure it's connected to the external Lego products database.
+2. Once the backend is running, the frontend will interact with it by sending survey responses and receiving the appropriate Lego product recommendations.
+3. For backend setup instructions, please refer to the Backend README.
