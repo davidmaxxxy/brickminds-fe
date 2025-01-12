@@ -11,7 +11,8 @@ Parents often struggle to find the right gifts for children, especially when it 
 - The front-end displays the recommended Lego sets that best match the criteria specified by the user.
 
 ## Demo
-The frontend of the project is fully functional and can be accessed through the deployed version. To see it in action, visit the link provided [here](#insert-deployment-link).
+The frontend of the project is fully functional and can be accessed by running the project locally by following the instructuons below.
+<img width="1717" alt="Screenshot 2025-01-12 at 15 05 20" src="https://github.com/user-attachments/assets/d575dae3-0d0e-4bef-899d-95e16de41eb7" />
 
 ## How to Run the Frontend Locally
 If you'd like to run the frontend locally, follow the instructions below:
